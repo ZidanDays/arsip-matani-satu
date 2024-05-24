@@ -1,0 +1,119 @@
+.auth .auth-form-light {
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 10);
+  transition: 0.5s;
+  width: max-content;
+}
+
+.auth .auth-form-light:hover {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(153, 0, 0, 0.5);
+}
+
+.auth .brand-logo img {
+  width: 200px;
+}
+
+.sidebar {
+  background: rgb(117, 18, 18) !important;
+}
+
+body {
+  background-color: rgb(117, 18, 18) !important;
+}
+
+.sidebar .nav .nav-item .nav-link {
+  color: white;
+}
+
+.warna-user {
+  color: rgb(155, 155, 155) !important;
+}
+
+.mdi-bookmark-check:before {
+  color: white !important;
+}
+
+.sidebar .nav .nav-item:hover {
+  background: rgb(100, 5, 5);
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.sidebar .nav .nav-item .nav-link .menu-title {
+  color: white;
+}
+.navbar .navbar-brand-wrapper {
+  background-color: rgb(36, 36, 36) !important;
+}
+
+.navbar .navbar-menu-wrapper {
+  background-color: rgb(36, 36, 36) !important;
+}
+
+.mdi-menu:before {
+  color: white;
+}
+.mdi-fullscreen:before {
+  color: white;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding-right: 0 !important;
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand {
+  width: none !important;
+}
+
+.sidebar .nav .nav-item .nav-link i.menu-icon {
+  color: white;
+}
+
+.mdi-alert-circle-outline:before {
+  color: rgb(148, 0, 0);
+}
+
+.anjas {
+  color: rgb(88, 88, 88);
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding-left: 0 !important;
+}
+
+.content-wrapper {
+  background: rgb(160, 160, 160);
+}
+
+.auth .auth-form-light {
+  background: #d2d2d2;
+}
+
+.auth form .form-group .form-control {
+  background: white;
+}
+
+.input-group-text {
+  border: none;
+}
+
+.form-control-lg {
+  padding: none;
+}
+
+.form-control {
+  padding: 15px;
+}

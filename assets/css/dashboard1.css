@@ -1,0 +1,16 @@
+.btn-simpan {
+  border: none;
+  background: rgb(11, 11, 85) !important;
+  color: white;
+  padding: 10px 47%;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.btn-simpan:hover {
+  border: none;
+  background: rgb(238, 194, 0) !important;
+  color: white;
+  padding: 10px 47%;
+  border-radius: 10px;
+}

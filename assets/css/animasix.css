@@ -1,0 +1,15 @@
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animated-card h4,
+.animated-card p {
+  animation: slideInRight 2s ease-in-out forwards;
+}
