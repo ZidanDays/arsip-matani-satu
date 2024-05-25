@@ -33,6 +33,21 @@
 
              <div class="col-md-6 stretch-card grid-margin">
                  <div class="card card-img-holder text-black">
+                     <div class="card-body">
+                         <img src="assets/images/a2.svg" class="card-img-absolute" alt="chart-image" />
+                         <h4 class="font-weight-normal mb-3">Total Arsip Keluar <i class="fa-solid fa-folder-open"></i>
+                         </h4>
+                         <?php
+                            include './conf/conf.php';
+                            $jumlah_arsip = mysqli_query($koneksi, "SELECT * FROM arsip_keluar");
+                            ?>
+                         <h2 class="mb-5">Jumlah <?php echo mysqli_num_rows($jumlah_arsip); ?> <br> Arsip</h2>
+                     </div>
+                 </div>
+             </div>
+
+             <div class="col-md-6 stretch-card grid-margin">
+                 <div class="card card-img-holder text-black">
                      <div class=" card-body">
                          <img src="assets/images/a3.svg" class="card-img-absolute" alt="book-image" />
                          <h4 class="font-weight-normal mb-3">Kategori Arsip <i class="fa-solid fa-folder-tree"></i></h4>

@@ -19,25 +19,34 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        </p>
+                        <?php
+                        if (isset($_GET['alert'])) {
+                            if ($_GET['alert'] == "sukses") {
+                                echo "<div class='alert alert-success'>Password anda berhasil diganti!</div>";
+                            } elseif ($_GET['alert'] == "gagal") {
+                                echo "<div class='alert alert-danger'>Password saat ini salah. Silakan coba lagi.</div>";
+                            }
+                        }
+                        ?>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="panel">
                                     <div class="panel-body">
-
-                                        <?php
-                                        if (isset($_GET['alert'])) {
-                                            if ($_GET['alert'] == "sukses") {
-                                                echo "<div class='alert alert-success'>Password anda berhasil diganti!</div>";
-                                            }
-                                        }
-                                        ?>
-
                                         <form action="?q=gantipasproses" method="post">
                                             <div class="form-group">
                                                 <input type="password" class="form-control"
-                                                    placeholder="Masukkan Password Baru Anda" name="password"
-                                                    required="required" min="5">
+                                                    placeholder="Masukkan Password Saat Ini" name="current_password"
+                                                    required="required" minlength="5">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control"
+                                                    placeholder="Masukkan Password Baru Anda" name="new_password"
+                                                    required="required" minlength="5">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control"
+                                                    placeholder="Konfirmasi Password Baru" name="confirm_password"
+                                                    required="required" minlength="5">
                                             </div>
                                             <div class="form-group">
                                                 <input type="submit" class="btn-simpan" value="Simpan">

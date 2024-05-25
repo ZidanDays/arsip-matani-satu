@@ -2,33 +2,31 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Arsip Pelabuhan</title>
-	<link rel="stylesheet" href="assets/css/andibaru1.css">
-	<link rel="stylesheet" href="assets/css/andi1.css">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Pelabuhan</title>
+    <link rel="stylesheet" href="assets/css/andibaru1.css">
+    <link rel="stylesheet" href="assets/css/andi1.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
 
-	<?php
-	// menghubungkan dengan koneksi
+    <?php
+	// Menghubungkan dengan koneksi
 	include 'conf/conf.php';
 
-	// menangkap data yang dikirim dari form
+	// Menangkap data yang dikirim dari form
 	$username = $_POST['username'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
 	$akses = $_POST['akses'];
 
 	if ($akses == "user") {
+		$login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$username'");
+		$data = mysqli_fetch_assoc($login);
 
-		$login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$username' AND user_password='$password'");
-		$cek = mysqli_num_rows($login);
-
-		if ($cek > 0) {
+		if ($data && password_verify($password, $data['user_password'])) {
 			session_start();
-			$data = mysqli_fetch_assoc($login);
 			$_SESSION['id'] = $data['user_id'];
 			$_SESSION['nama'] = $data['user_nama'];
 			$_SESSION['username'] = $data['user_username'];
@@ -61,12 +59,11 @@
          </script>';
 		}
 	} else {
-		$login = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_username='$username' AND petugas_password='$password'");
-		$cek = mysqli_num_rows($login);
+		$login = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_username='$username'");
+		$data = mysqli_fetch_assoc($login);
 
-		if ($cek > 0) {
+		if ($data && password_verify($password, $data['petugas_password'])) {
 			session_start();
-			$data = mysqli_fetch_assoc($login);
 			$_SESSION['id'] = $data['petugas_id'];
 			$_SESSION['nama'] = $data['petugas_nama'];
 			$_SESSION['username'] = $data['petugas_username'];
@@ -101,7 +98,6 @@
 	}
 
 	?>
-
 
 </body>
 

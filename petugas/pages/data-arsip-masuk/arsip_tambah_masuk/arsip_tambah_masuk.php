@@ -9,7 +9,8 @@
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">
-                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                     </li>
                 </ul>
             </nav>
@@ -19,14 +20,15 @@
                 <div class="panel panel">
                     <div class="panel-body">
                         <div class="pull-right">
-                            <a href="?q=data-arsip-masuk" class="btn btn-sm btn-primary" style="margin-bottom: 20px;"><i class="fa fa-arrow-left"></i>
+                            <a href="?q=data-arsip-masuk" class="btn btn-sm btn-primary" style="margin-bottom: 20px;"><i
+                                    class="fa fa-arrow-left"></i>
                                 Kembali</a>
                         </div>
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Upload Arsip Kamu </h4>
-                                    <p class="card-description"> Add class </p>
+                                    <!-- <p class="card-description"> Add class </p> -->
                                     <div class="table-responsive">
                                         <form method="post" action="?q=arsip_aksi_masuk" enctype="multipart/form-data">
 
@@ -49,9 +51,9 @@
                                                     $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
                                                     while ($k = mysqli_fetch_array($kategori)) {
                                                     ?>
-                                                        <option value="<?php echo $k['kategori_id']; ?>">
-                                                            <?php echo $k['kategori_nama']; ?>
-                                                        </option>
+                                                    <option value="<?php echo $k['kategori_id']; ?>">
+                                                        <?php echo $k['kategori_nama']; ?>
+                                                    </option>
                                                     <?php
                                                     }
                                                     ?>
@@ -60,7 +62,8 @@
 
                                             <div class="form-group">
                                                 <label>Keterangan</label>
-                                                <textarea class="form-control" name="keterangan" required="required"></textarea>
+                                                <textarea class="form-control" name="keterangan"
+                                                    required="required"></textarea>
                                             </div>
 
                                             <div class="form-group">
@@ -88,3 +91,4 @@
 
 
     </div>
+</div>

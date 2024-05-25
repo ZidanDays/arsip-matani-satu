@@ -23,7 +23,6 @@ if (empty($query)) {
     $arsip = mysqli_query($koneksi, "SELECT arsip.*, kategori.kategori_nama, petugas.petugas_nama FROM arsip
         LEFT JOIN kategori ON arsip.arsip_kategori = kategori.kategori_id
         LEFT JOIN petugas ON arsip.arsip_petugas = petugas.petugas_id
-        WHERE arsip.arsip_kode LIKE '%$query%' OR arsip.arsip_nama LIKE '%$query%'
         ORDER BY arsip.arsip_id DESC");
 
     if (!$arsip) {
@@ -33,6 +32,24 @@ if (empty($query)) {
     while ($p = mysqli_fetch_assoc($arsip)) {
         $searchResults[] = $p;
     }
+
+    // Fungsi untuk melakukan pencarian sequential search
+    function sequentialSearch($array, $query) {
+        $results = [];
+
+        foreach ($array as $item) {
+            // Cocokkan kata kunci pencarian dengan kolom arsip_kode atau arsip_nama
+            if (strpos(strtolower($item['arsip_kode']), strtolower($query)) !== false || 
+                strpos(strtolower($item['arsip_nama']), strtolower($query)) !== false) {
+                $results[] = $item;
+            }
+        }
+
+        return $results;
+    }
+
+    // Lakukan pencarian sequential search
+    $searchResults = sequentialSearch($searchResults, $query);
 }
 ?>
 
@@ -95,9 +112,10 @@ if (empty($query)) {
                                     <th class="text-center" style="background-color: #dc3545;
     color: #fff;;">
                                         Petugas</th>
-                                    <th class="text-center" style="background-color: #dc3545;
-    color: #fff;;">
+                                    <th class="text-center" style="background-color: #dc3545; color: #fff;;">
                                         Keterangan</th>
+                                    <th class="text-center" style="background-color: #dc3545; color: #fff;;">
+                                        Similiarity</th>
                                     <th class="text-center" style="background-color: #dc3545;
     color: #fff;;">
                                         Aksi
@@ -107,11 +125,18 @@ if (empty($query)) {
                             <tbody>
                                 <?php
                                 // Menampilkan hasil pencarian atau pesan jika tidak ditemukan
-                                if (!empty($query)) {
-                                    if (!empty($searchResults)) {
-                                        // Tampilkan hasil pencarian
-                                        foreach ($searchResults as $index => $p) {
-                                ?>
+// Menampilkan hasil pencarian atau pesan jika tidak ditemukan
+if (!empty($query)) {
+    if (!empty($searchResults)) {
+        // Tampilkan hasil pencarian
+        foreach ($searchResults as $index => $p) {
+            // Menghitung persentase kemiripan
+            $codeSimilarity = similar_text(strtolower($p['arsip_kode']), strtolower($query), $percentCode);
+            $nameSimilarity = similar_text(strtolower($p['arsip_nama']), strtolower($query), $percentName);
+            $similarity = max($percentCode, $percentName); // Mengambil persentase kemiripan tertinggi
+            
+            // Menampilkan data dalam baris tabel
+            ?>
                                 <tr>
                                     <td><?= ($index + 1) ?></td>
                                     <td><?= date('H:i:s  d-m-Y', strtotime($p['arsip_waktu_upload'])) ?></td>
@@ -120,6 +145,7 @@ if (empty($query)) {
                                     <td><?= $p['kategori_nama'] ?></td>
                                     <td><?= $p['petugas_nama'] ?></td>
                                     <td><?= $p['arsip_keterangan'] ?></td>
+                                    <td class="text-center"><?= $similarity ?>%</td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a target="_blank" class="btn btn-default"
@@ -131,19 +157,19 @@ if (empty($query)) {
                                     </td>
                                 </tr>
                                 <?php
-                                        }
-                                    } else {
-                                        ?>
+        }
+    } else {
+        ?>
                                 <tr>
                                     <td colspan='7'>Tidak ada hasil yang ditemukan untuk '<?= $query ?>'</td>
                                 </tr>
                                 <?php
-                                    }
-                                } else {
-                                    // Menampilkan semua dokumen jika tidak ada query
-                                    $no = 1;
-                                    foreach ($searchResults as $p) {
-                                    ?>
+    }
+} else {
+    // Menampilkan semua dokumen jika tidak ada query
+    $no = 1;
+    foreach ($searchResults as $p) {
+        ?>
                                 <tr>
                                     <td class='text-center'><?= $no++ ?></td>
                                     <td><?= date('H:i:s  d-m-Y', strtotime($p['arsip_waktu_upload'])) ?></td>
@@ -152,6 +178,7 @@ if (empty($query)) {
                                     <td><?= $p['kategori_nama'] ?></td>
                                     <td><?= $p['petugas_nama'] ?></td>
                                     <td><?= $p['arsip_keterangan'] ?></td>
+                                    <td><?= isset($p['similarity']) ? number_format($p['similarity'], 2) : '0.00' ?>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a target="_blank" class="btn btn-default"
@@ -163,8 +190,9 @@ if (empty($query)) {
                                     </td>
                                 </tr>
                                 <?php
-                                    }
-                                }
+    }
+}
+
                                 ?>
                             </tbody>
                         </table>
