@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Arsip Pelabuhan</title>
+    <title>Arsip Desa Matani Satu</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/andibaru2.css">
     <link rel="stylesheet" href="assets/css/andi1.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/faviconn.ico" />
+    <link rel="shortcut icon" href="assets/images/Lambang_Kabupaten_Minahasa_Selatan.png" />
 
 
     <!-- jQuery -->
@@ -64,8 +64,9 @@
                                         <i class="mb-1 fas fa-info-circle" data-toggle="tooltip" data-placement="top"
                                             title="Klik untuk informasi"></i>
                                         <select class="form-control" name="akses">
-                                            <option value="petugas">Petugas</option>
                                             <option value="user">User</option>
+                                            <option value="petugas">Petugas</option>
+                                            <option value="admin">Admin</option>
                                         </select>
                                     </label>
                                 </div>

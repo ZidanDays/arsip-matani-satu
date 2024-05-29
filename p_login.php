@@ -13,27 +13,27 @@
 <body>
 
     <?php
-	// Menghubungkan dengan koneksi
-	include 'conf/conf.php';
+    // Menghubungkan dengan koneksi
+    include 'conf/conf.php';
 
-	// Menangkap data yang dikirim dari form
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$akses = $_POST['akses'];
+    // Menangkap data yang dikirim dari form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $akses = $_POST['akses'];
 
-	if ($akses == "user") {
-		$login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$username'");
-		$data = mysqli_fetch_assoc($login);
+    if ($akses == "user") {
+        $login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$username'");
+        $data = mysqli_fetch_assoc($login);
 
-		if ($data && password_verify($password, $data['user_password'])) {
-			session_start();
-			$_SESSION['id'] = $data['user_id'];
-			$_SESSION['nama'] = $data['user_nama'];
-			$_SESSION['username'] = $data['user_username'];
-			$_SESSION['status'] = "user_login";
+        if ($data && password_verify($password, $data['user_password'])) {
+            session_start();
+            $_SESSION['id'] = $data['user_id'];
+            $_SESSION['nama'] = $data['user_nama'];
+            $_SESSION['username'] = $data['user_username'];
+            $_SESSION['status'] = "user_login";
 
-			// SweetAlert berhasil login
-			echo '<script type="text/javascript">
+            // SweetAlert berhasil login
+            echo '<script type="text/javascript">
             Swal.fire({
                 icon: "success",
                 title: "Berhasil Login!",
@@ -44,9 +44,9 @@
                 window.location.href = "dashboard.php";
             });
          </script>';
-		} else {
-			// SweetAlert gagal login
-			echo '<script type="text/javascript">
+        } else {
+            // SweetAlert gagal login
+            echo '<script type="text/javascript">
             Swal.fire({
                 icon: "error",
                 title: "Login Gagal!",
@@ -57,47 +57,95 @@
                 window.location.href = "index.php?alert=gagal";
             });
          </script>';
-		}
-	} else {
-		$login = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_username='$username'");
-		$data = mysqli_fetch_assoc($login);
+        }
+    } elseif ($akses == "petugas") {
+        $login = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_username='$username'");
+        $data = mysqli_fetch_assoc($login);
 
-		if ($data && password_verify($password, $data['petugas_password'])) {
-			session_start();
-			$_SESSION['id'] = $data['petugas_id'];
-			$_SESSION['nama'] = $data['petugas_nama'];
-			$_SESSION['username'] = $data['petugas_username'];
-			$_SESSION['status'] = "petugas_login";
+        if ($data && password_verify($password, $data['petugas_password'])) {
+            session_start();
+            $_SESSION['id'] = $data['petugas_id'];
+            $_SESSION['nama'] = $data['petugas_nama'];
+            $_SESSION['username'] = $data['petugas_username'];
+            $_SESSION['status'] = "petugas_login";
 
-			// SweetAlert berhasil login
-			echo '<script type="text/javascript">
-				Swal.fire({
-					icon: "success",
-					title: "Berhasil Login!",
-					text: "Selamat datang, ' . $data['petugas_nama'] . '!",
-					showConfirmButton: false,
-					timer: 1500
-				}).then(function(){
-					window.location.href = "petugas/";
-				});
-			 </script>';
-		} else {
-			// SweetAlert gagal login
-			echo '<script type="text/javascript">
-				Swal.fire({
-					icon: "error",
-					title: "Login Gagal!",
-					text: "Username atau password salah!",
-					showConfirmButton: false,
-					timer: 1500
-				}).then(function(){
-					window.location.href = "index.php?alert=gagal";
-				});
-			 </script>';
-		}
-	}
+            // SweetAlert berhasil login
+            echo '<script type="text/javascript">
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil Login!",
+                    text: "Selamat datang, ' . $data['petugas_nama'] . '!",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function(){
+                    window.location.href = "petugas/";
+                });
+             </script>';
+        } else {
+            // SweetAlert gagal login
+            echo '<script type="text/javascript">
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Gagal!",
+                    text: "Username atau password salah!",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function(){
+                    window.location.href = "index.php?alert=gagal";
+                });
+             </script>';
+        }
+    } elseif ($akses == "admin") {
+        $login = mysqli_query($koneksi, "SELECT * FROM admin WHERE admin_username='$username'");
+        $data = mysqli_fetch_assoc($login);
 
-	?>
+        if ($data && password_verify($password, $data['admin_password'])) {
+            session_start();
+            $_SESSION['id'] = $data['admin_id'];
+            $_SESSION['nama'] = $data['admin_nama'];
+            $_SESSION['username'] = $data['admin_username'];
+            $_SESSION['status'] = "admin_login";
+
+            // SweetAlert berhasil login
+            echo '<script type="text/javascript">
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil Login!",
+                    text: "Selamat datang, ' . $data['admin_nama'] . '!",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function(){
+                    window.location.href = "admin/";
+                });
+             </script>';
+        } else {
+            // SweetAlert gagal login
+            echo '<script type="text/javascript">
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Gagal!",
+                    text: "Username atau password salah!",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function(){
+                    window.location.href = "index.php?alert=gagal";
+                });
+             </script>';
+        }
+    } else {
+        echo '<script type="text/javascript">
+            Swal.fire({
+                icon: "error",
+                title: "Login Gagal!",
+                text: "Akses tidak valid!",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(function(){
+                window.location.href = "index.php?alert=gagal";
+            });
+         </script>';
+    }
+    ?>
 
 </body>
 
