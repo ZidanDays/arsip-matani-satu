@@ -64,7 +64,7 @@
                                         <i class="mb-1 fas fa-info-circle" data-toggle="tooltip" data-placement="top"
                                             title="Klik untuk informasi"></i>
                                         <select class="form-control" name="akses">
-                                            <option value="user">User</option>
+                                            <!-- <option value="user">User</option> -->
                                             <option value="petugas">Petugas</option>
                                             <option value="admin">Admin</option>
                                         </select>

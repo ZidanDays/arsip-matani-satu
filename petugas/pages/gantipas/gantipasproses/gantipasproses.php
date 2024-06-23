@@ -9,7 +9,7 @@ if (isset($_SESSION['id'])) {
 }
 
 if (isset($_POST['password'])) {
-    $password = md5($_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $stmt = mysqli_prepare($koneksi, "UPDATE petugas SET petugas_password=? WHERE petugas_id=?");
     mysqli_stmt_bind_param($stmt, "si", $password, $id);
 

@@ -23,6 +23,7 @@ if ($_SESSION['status'] != "admin_login") {
     <link rel="stylesheet" href="../assets/css/dashboard1.css">
     <link rel="stylesheet" href="../assets/css/andi1.css">
     <link rel="stylesheet" href="../assets/css/animasix.css">
+    <link rel="stylesheet" href="table.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../assets/images/Lambang_Kabupaten_Minahasa_Selatan.png" />
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrapp.min.css">
@@ -61,7 +62,7 @@ if ($_SESSION['status'] != "admin_login") {
             <?php
             include '../conf/conf.php';
             $id = $_SESSION['id'];
-            $saya = mysqli_query($koneksi, "select * from user where user_id='$id'");
+            $saya = mysqli_query($koneksi, "select * from admin where admin_id='$id'");
             $s = mysqli_fetch_assoc($saya);
             ?>
             <!-- partial:partials/_sidebar.html -->
@@ -70,13 +71,14 @@ if ($_SESSION['status'] != "admin_login") {
                     <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="nav-profile-image">
-                                <img src="gambar/user/<?= $s['user_foto']; ?>" alt="profile">
+                                <!-- <img src="../gambar/user/<?= $s['admin_foto']; ?>" alt="profile"> -->
+                                <img src="../assets/images/Lambang_Kabupaten_Minahasa_Selatan.png" alt="profile">
                                 <span class="login-status online"></span>
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
 
-                                <span class="font-weight-bold mb-2"><?php echo $s['user_nama']; ?></span>
-                                <span class="warna-user">User</span>
+                                <span class="font-weight-bold mb-2"><?php echo $s['admin_nama']; ?></span>
+                                <span class="warna-user">Admin</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
@@ -88,6 +90,12 @@ if ($_SESSION['status'] != "admin_login") {
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="?q=data-penduduk">
+                            <span class="menu-title">Data Penduduk</span>
+                            <i class="fa-solid fa-file-circle-plus menu-icon"></i>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#arsipDropdown" aria-expanded="false"
                             aria-controls="arsipDropdown">
                             <span class="menu-title">Data Arsip</span>
@@ -109,7 +117,7 @@ if ($_SESSION['status'] != "admin_login") {
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#userDropdown" aria-expanded="false"
@@ -125,12 +133,12 @@ if ($_SESSION['status'] != "admin_login") {
                                         <span class="menu-title">Daftar Pegawai</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="?q=data_person">
                                         <i class="fas fa-user-friends"></i>
                                         <span class="menu-title">Daftar User</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>

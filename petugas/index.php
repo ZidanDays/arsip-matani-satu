@@ -96,30 +96,36 @@ if ($_SESSION['status'] != "petugas_login") {
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="?q=data-penduduk">
+                            <span class="menu-title">Data Penduduk</span>
+                            <i class="fa-solid fa-file-circle-plus menu-icon"></i>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=data-arsip-masuk">
                             <span class="menu-title">Surat Masuk</span>
                             <i class="fa-solid fa-file-circle-plus menu-icon"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=data-arsip-keluar">
                             <span class="menu-title">Surat Keluar</span>
                             <i class="fa-solid fa-file-circle-minus menu-icon"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=kategori">
                             <span class="menu-title">Kategori</span>
                             <i class="fa-solid fa-table-list menu-icon" style="margin-right: 2px;"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=riwayat_unduhan">
                             <span class="menu-title">Riwayat Unduh</span>
                             <i class="fa-solid fa-floppy-disk menu-icon" style="margin-right: 3px;"></i>
                         </a>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=riwayat_unduhan">
                             <span class="menu-title">
                                 Riwayat Unduh <br>
@@ -127,8 +133,8 @@ if ($_SESSION['status'] != "petugas_login") {
                             </span>
                             <i class="fa-solid fa-clock-rotate-left menu-icon"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?q=riwayat_unduhan_skeluar">
                             <span class="menu-title">
                                 Riwayat Unduh <br>
@@ -136,7 +142,7 @@ if ($_SESSION['status'] != "petugas_login") {
                             </span>
                             <i class="fa-solid fa-clock-rotate-left menu-icon"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="?q=gantipas">
                             <span class="menu-title">Ganti Password</span>
@@ -149,12 +155,12 @@ if ($_SESSION['status'] != "petugas_login") {
                             <i class="fa-solid fa-sliders menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="tentang.php">
                             <span class="menu-title">Tentang</span>
                             <i class="fa-solid fa-sliders menu-icon"></i>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a class="nav-link" href="?q=logout">

@@ -8,19 +8,19 @@ $confirm_password = $_POST['confirm_password'];
 $id = $_SESSION['id']; // Asumsi user_id disimpan dalam sesi setelah login
 
 // Ambil password saat ini dari database
-$query = "SELECT user_password FROM user WHERE user_id='$id'";
+$query = "SELECT admin_password FROM admin WHERE admin_id='$id'";
 $result = mysqli_query($koneksi, $query);
 $row = mysqli_fetch_assoc($result);
 
 // Verifikasi password saat ini
-if (password_verify($current_password, $row['user_password'])) {
+if (password_verify($current_password, $row['admin_password'])) {
     // Periksa apakah password baru dan konfirmasi password cocok
     if ($new_password === $confirm_password) {
         // Hash password baru
         $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
 
         // Update password baru ke database
-        $update_query = "UPDATE user SET user_password='$hashed_new_password' WHERE user_id='$id'";
+        $update_query = "UPDATE admin SET admin_password='$hashed_new_password' WHERE admin_id='$id'";
         if (mysqli_query($koneksi, $update_query)) {
             echo '<script>window.location.href = "?q=gantipas&alert=sukses";</script>';
         } else {

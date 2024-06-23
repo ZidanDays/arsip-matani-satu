@@ -21,49 +21,21 @@
                  <div class="card card-img-holder text-black">
                      <div class="card-body">
                          <img src="../assets/images/a2.svg" class="card-img-absolute" alt="chart-image" />
-                         <h4 class="font-weight-normal mb-3">Total Arsip <i class="fa-solid fa-folder-open"></i></h4>
+                         <h4 class="font-weight-normal mb-3">Total Penduduk <i class="fa-solid fa-folder-open"></i></h4>
                          <?php
                             include '../conf/conf.php';
-                            $jumlah_arsip = mysqli_query($koneksi, "SELECT * FROM arsip");
+                            $jumlah_penduduk = mysqli_query($koneksi, "SELECT * FROM penduduk");
                             ?>
-                         <h2 class="mb-5"><?php echo mysqli_num_rows($jumlah_arsip); ?></h2>
-                     </div>
-                 </div>
-             </div>
-
-             <div class="col-md-6 stretch-card grid-margin">
-                 <div class="card card-img-holder text-black">
-                     <div class="card-body">
-                         <img src="../assets/images/a2.svg" class="card-img-absolute" alt="chart-image" />
-                         <h4 class="font-weight-normal mb-3">Total Arsip Keluar <i class="fa-solid fa-folder-open"></i>
-                         </h4>
-                         <?php
-                            include '../conf/conf.php';
-                            $jumlah_arsip = mysqli_query($koneksi, "SELECT * FROM arsip_keluar");
-                            ?>
-                         <h2 class="mb-5"><?php echo mysqli_num_rows($jumlah_arsip); ?></h2>
-                     </div>
-                 </div>
-             </div>
-
-             <div class="col-md-6 stretch-card grid-margin">
-                 <div class="card card-img-holder text-black">
-                     <div class=" card-body">
-                         <img src="../assets/images/a3.svg" class="card-img-absolute" alt="book-image" />
-                         <h4 class="font-weight-normal mb-3">Kategori Arsip <i class="fa-solid fa-folder-tree"></i></h4>
-                         <?php
-                            include '../conf/conf.php';
-                            $jumlah_kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
-                            ?>
-                         <h2 class="mb-5"><?php echo mysqli_num_rows($jumlah_kategori); ?></h2>
+                         <h2 class="mb-5"><?php echo mysqli_num_rows($jumlah_penduduk); ?></h2>
                      </div>
                  </div>
              </div>
          </div>
      </div>
+
      <footer class="footer">
          <div class="container-fluid text-center">
-             <span class="text-center">Copyright©Hallooo-Tech 2024</span>
+             <span class="text-center">Copyright©Salsabila 2024</span>
          </div>
      </footer>
  </div>

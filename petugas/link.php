@@ -7,6 +7,33 @@ if (!empty($page)) {
             include './pages/beranda/beranda.php';
             break;
 
+            //data penduduk
+        case 'data-penduduk':
+            include './pages/data-penduduk/data-penduduk.php';
+            break;
+
+            case 'data-tambah':
+                include './pages/data-penduduk/data-tambah/data-tambah.php';
+                break;
+    
+            case 'data-edit':
+                include './pages/data-penduduk/data-edit/data-edit.php';
+                break;
+
+            case 'data-edit-proses':
+                include './pages/data-penduduk/data-edit/data-edit-proses.php';
+                break;
+    
+            case 'data-hapus':
+                include './pages/data-penduduk/data-hapus/data-hapus.php';
+                break;
+    
+            case 'data-aksi':
+                include './pages/data-penduduk/data-aksi/data-aksi.php';
+                break;
+
+                //end of data penduduk
+
             //SURAT MASUK
         case 'data-arsip-masuk':
             include './pages/data-arsip-masuk/data-arsip-masuk.php';
